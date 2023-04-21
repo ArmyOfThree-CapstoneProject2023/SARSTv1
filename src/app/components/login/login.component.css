@@ -1,0 +1,12 @@
+mat-card {
+  align-items: center;
+  padding: 50px;
+}
+
+mat-form-field{
+  margin: 10px;
+}
+
+button {
+  color: white;
+}

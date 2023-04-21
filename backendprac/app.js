@@ -2,6 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
+
+const userRoutes = require('./routes/user');
+
 const app = express();
 
 //mongoose connects Node.js/Express.js with the cloud mongodb SARSTdb
@@ -25,8 +28,6 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use((req, res, next) => {
-  res.send('Hello from larry!!');
-});
+app.use('./api/user', userRoutes)
 
 module.exports = app;
