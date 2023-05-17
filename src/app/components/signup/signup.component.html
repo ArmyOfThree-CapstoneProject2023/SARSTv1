@@ -1,22 +1,40 @@
 <mat-card>
+  <!--Spinner for loading page-->
   <mat-spinner *ngIf="isLoading"></mat-spinner>
+
+  <!--Entire Form for Registering for an Account-->
   <form (submit)="onRegister(registerForm)" #registerForm="ngForm" *ngIf="!isLoading">
-    <mat-form-field>
-      <input matInput name="firstName" ngModel type="firstName" placeholder="First Name" #fnameInput="ngModel" required>
-      <mat-error *ngIf="fnameInput.invalid">Please enter a valid First Name</mat-error>
+
+    <!--Username Form Field-->
+    <mat-form-field appearance="fill">
+      <input matInput name="username" ngModel type="text" placeholder="Username" #usernameInput="ngModel" required>
+      <mat-error *ngIf="usernameInput.invalid">Please submit a valid username</mat-error>
     </mat-form-field>
-    <mat-form-field>
-      <input matInput name="lastName" ngModel type="lastName" placeholder="Last Name" #lnameInput="ngModel" required>
-      <mat-error *ngIf="lnameInput.invalid">Please enter a valid Last Name</mat-error>
-    </mat-form-field>
-    <mat-form-field>
+
+    <!--Email Form Field-->
+    <mat-form-field appearance="fill">
       <input matInput name="email" ngModel type="email" placeholder="E-Mail" #emailInput="ngModel" required email>
       <mat-error *ngIf="emailInput.invalid">Please enter a vaild Email address</mat-error>
     </mat-form-field>
-    <mat-form-field>
+
+    <!--Password Form Field-->
+    <mat-form-field appearance="fill">
       <input type="password" name="password" ngModel matInput placeholder="Password" #passwordInput="ngModel" required>
       <mat-error *ngIf="passwordInput.invalid">Please enter a valid Password</mat-error>
     </mat-form-field>
+
+    <!--Selection of account Types-->
+    <h4>Choose Account an Type</h4>
+    <mat-form-field appearance="fill">
+      <mat-label>Select an Option</mat-label>
+      <mat-select name="accountType" ngModel [ngModel]="defaultQuestion" required>
+      <mat-option *ngFor="let accountType of accountTypes" [value]="accountType.accountType">
+        {{accountType.viewValue}}
+      </mat-option>
+    </mat-select>
+    </mat-form-field>
+
+    <!--Submission Button-->
     <button mat-raised-button type="submit">Register</button>
   </form>
 </mat-card>
