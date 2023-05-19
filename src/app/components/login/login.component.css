@@ -1,12 +1,38 @@
 mat-card {
   align-items: center;
   padding: 50px;
+  background-color: #0367A6;
 }
 
 mat-form-field{
-  margin: 10px;
+  margin: 15px;
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 10px;
+  background-color: white;
 }
 
-button {
+mat-error {
+  padding-top: 25px;
+  color: rgb(231, 51, 51);
+}
+
+form button {
+  background-color: rgb(231, 51, 51);
   color: white;
+}
+
+.jumbotron {
+  align-items: center;
+  padding: 90px;
+
+}
+
+body #main-section {
+  background-color: #0367A6;
+  font-family: 'Aboreto', cursive;
+  font-family: 'Montserrat Subrayada', sans-serif;
+  font-family: 'Overpass', sans-serif;
+  font-family: 'Ubuntu', sans-serif;
 }
