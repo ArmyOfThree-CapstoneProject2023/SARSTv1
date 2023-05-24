@@ -2,64 +2,86 @@
 and make look nice-->
 <!--Also mat select is not looking right, when you go to select a user type it pops up at the bottom of the screen
 under the footer-->
-<div class="offset-lg-3 p-lg-5  my-5 text-center">
-  <div class="col-md-8 order-md-1" id="regForm">
-      <h4 class="mb-3">Registration</h4>
-      <a href="https://www.freepnglogos.com/pics/salvation-army-logo-hd" title="Image from freepnglogos.com"><img src="https://www.freepnglogos.com/uploads/salvation-army-png-logo/the-salvation-army-png-logo-0.png" width="200" alt="the salvation army png logo" /></a>
-      <br>
-      <br>
-      <br>
-      <br>
-      <form class="needs-validation" novalidate="">
+
+<body>
+  <div class="offset-lg-3 p-lg-5 my-5 text-center">
+    <div class="col-md-8 order-md-1 border" id="regForm">
+
+      <mat-card class="bg-light">
+        <br>
+        <br>
+        <h4 class="mb-3">REGISTRATION</h4>
+        <a href="https://www.freepnglogos.com/pics/salvation-army-logo-hd" title="Image from freepnglogos.com"><img src="https://www.freepnglogos.com/uploads/salvation-army-png-logo/the-salvation-army-png-logo-0.png" width="200" alt="the salvation army png logo" /></a>
+        <br>
+        <br>
+        <br>
+        <!--Spinner for loading page-->
+        <mat-spinner *ngIf="isLoading"></mat-spinner>
+
+
+        <!--FORM: registration-->
+        <form (submit)="onRegister(registerForm)" #registerForm="ngForm" *ngIf="!isLoading">
         <div class="row">
-          <div class="col-md-6 mb-3">
-            <label for="firstName">Username</label>
-            <input type="text" class="form-control" id="username" placeholder="" value="" required="">
-            <div class="invalid-feedback">
-              Username is required.
-            </div>
+          <div class="col-md-4 mb-5">
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Username</mat-label>
+              <input matInput name="username" ngModel type="text" placeholder="Username" #usernameInput="ngModel" required>
+              <mat-error *ngIf="usernameInput.invalid">Please submit a valid username</mat-error>
+            </mat-form-field>
           </div>
-          <div class="col-md-6 mb-3">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" id="lastName" placeholder="" value="" required="">
-            <div class="invalid-feedback">
-              A password is required.
-            </div>
+
+          <div class="col-md-4 mb-5">
+            <!--Password Form Field-->
+            <mat-form-field appearance="outline">
+              <mat-label>Password</mat-label>
+              <input type="password" name="password" ngModel matInput placeholder="Password" #passwordInput="ngModel" required>
+              <mat-error *ngIf="passwordInput.invalid">Please enter a valid Password</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-md-2">
+            <!--Email Form Field-->
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Enter your email</mat-label>
+              <input matInput name="email" ngModel type="email" placeholder="1234@example.com" #emailInput="ngModel" required email>
+                <mat-error *ngIf="emailInput.invalid">Please enter a vaild Email address</mat-error>
+            </mat-form-field>
           </div>
         </div>
 
-
-
-
-        <div class="mb-3">
-          <label for="address">Email</label>
-          <input type="text" class="form-control" id="address" placeholder="1234@example.com" required="">
-          <div class="invalid-feedback">
-            Please enter a valid email address.
-          </div>
-        </div>
 
 
         <div class="row">
-          <div class="col-md-9 mb-5 ">
-            <label for="userType" class="m-4">User Type</label>
-            <div class="btn-group btn-group-toggle" data-toggle="buttons">
-              <label class="btn btn-light mb-2">
-                <input type="radio" name="options" id="option1" autocomplete="off" >ROOT
-              </label>
-              <label class="btn btn-light">
-                <input type="radio" name="options" id="option2" autocomplete="off"> ADMIN
-              </label>
-              <label class="btn btn-light">
-                <input type="radio" name="options" id="option3" autocomplete="off"> SERVICE PROVIDER
-              </label>
-            </div>
+          <div class="col-md-7">
+            <mat-label>Pronouns</mat-label>
+            <mat-chip-listbox aria-label="UserType Selection">
+              <mat-chip-option>she/her</mat-chip-option>
+              <mat-chip-option color="warn">he/him</mat-chip-option>
+              <mat-chip-option color="accent" selected>they/them</mat-chip-option>
+            </mat-chip-listbox>
           </div>
 
 
+          <div class="col-md-4 offset-lg-1 mb-5 ">
+          <!--Selection of account Types-->
+          <label>Choose Account UserType</label>
+          <mat-form-field appearance="outline">
+            <mat-label>Select an Option</mat-label>
+            <mat-select name="accountType" ngModel [ngModel]="defaultQuestion" required>
+              <mat-option *ngFor="let accountType of accountTypes" [value]="accountType.accountType">
+                {{accountType.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          </div>
         </div>
+
         <hr class="mb-4">
-        <button class="btn btn-danger btn-lg btn-block" type="submit">Register</button>
+
+        <!--Submission Button-->
+        <button class="btn btn-danger btn-lg btn-block" mat-raised-button type="submit">SIGN UP</button>
+
+        <!--SPACING-->
         <br>
         <br>
         <br>
@@ -71,51 +93,13 @@ under the footer-->
         <br>
         <br>
 
+        </form>
+      </mat-card>
 
-
-
-
-      </form>
     </div>
-</div>
 
-<mat-card>
-  <!--Spinner for loading page-->
-  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  </div>
 
-  <!--Entire Form for Registering for an Account-->
-  <form (submit)="onRegister(registerForm)" #registerForm="ngForm" *ngIf="!isLoading">
+</body>
 
-    <!--Username Form Field-->
-    <mat-form-field appearance="fill">
-      <input matInput name="username" ngModel type="text" placeholder="Username" #usernameInput="ngModel" required>
-      <mat-error *ngIf="usernameInput.invalid">Please submit a valid username</mat-error>
-    </mat-form-field>
 
-    <!--Email Form Field-->
-    <mat-form-field appearance="fill">
-      <input matInput name="email" ngModel type="email" placeholder="E-Mail" #emailInput="ngModel" required email>
-      <mat-error *ngIf="emailInput.invalid">Please enter a vaild Email address</mat-error>
-    </mat-form-field>
-
-    <!--Password Form Field-->
-    <mat-form-field appearance="fill">
-      <input type="password" name="password" ngModel matInput placeholder="Password" #passwordInput="ngModel" required>
-      <mat-error *ngIf="passwordInput.invalid">Please enter a valid Password</mat-error>
-    </mat-form-field>
-
-    <!--Selection of account Types-->
-    <h4>Choose Account an Type</h4>
-    <mat-form-field appearance="fill">
-      <mat-label>Select an Option</mat-label>
-      <mat-select name="accountType" ngModel [ngModel]="defaultQuestion" required>
-      <mat-option *ngFor="let accountType of accountTypes" [value]="accountType.accountType">
-        {{accountType.viewValue}}
-      </mat-option>
-    </mat-select>
-    </mat-form-field>
-
-    <!--Submission Button-->
-    <button mat-raised-button type="submit">Register</button>
-  </form>
-</mat-card>

@@ -22,6 +22,7 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { FooterComponent } from './components/footer/footer.component';
     MatSidenavModule,
     MatButtonModule,
     MatCardModule,
+    MatChipsModule,
     MatInputModule,
     MatExpansionModule,
     MatProgressSpinnerModule,

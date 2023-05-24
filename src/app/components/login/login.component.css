@@ -4,17 +4,24 @@ mat-card {
   background-color: #0367A6;
 }
 
-mat-form-field{
+form {
+  background-color: white;
+  /* top, right , bottom , left  */
+  padding: 25px 600px 25px 600px;
+}
+
+mat-form-field {
   margin: 15px;
-  padding-top: 7px;
+  padding-top: 10px;
   padding-left: 20px;
   padding-right: 20px;
   border-radius: 10px;
-  background-color: white;
 }
 
+
+
 mat-error {
-  padding-top: 25px;
+  padding-top: 12px;
   color: rgb(231, 51, 51);
 }
 
@@ -31,7 +38,6 @@ form button {
 }
 
 body #main-section {
-  background-color: #0367A6;
   font-family: 'Aboreto', cursive;
   font-family: 'Montserrat Subrayada', sans-serif;
   font-family: 'Overpass', sans-serif;
