@@ -22,11 +22,15 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { FacilityComponent } from './components/facility/facility.component';
+import { CreateResidentComponent } from './components/resident/create-resident/create-resident.component';
+import { ListResidentComponent } from './components/resident/list-resident/list-resident.component';
+
 import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [
-    AppComponent, HeaderComponent, LoginComponent, SignupComponent, FooterComponent
+    AppComponent, HeaderComponent, LoginComponent, SignupComponent, FooterComponent, FacilityComponent, CreateResidentComponent, ListResidentComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,25 @@
+<mat-card>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <form (submit)="onSaveRes(residentForm)" #residentForm="ngForm" *ngIf="!isLoading">
+    <mat-form-field>
+      <input
+      matInput
+      type="text"
+      name="name"
+      [ngModel]="resident?.name"
+      placeholder="Resident Name" #name="ngModel">
+      <mat-error *ngIf="name.invalid">Please enter a valid name</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea
+      matInput
+      rows="4"
+      name= "content"
+      [ngModel]="resident?.content" placeholder="Description of Resident"
+      required
+      #content="ngModel"></textarea>
+      <mat-error *ngIf="content.invalid">Please enter a valid description</mat-error>
+    </mat-form-field>
+    <button mat-raised-button type="submit">Submit Resident</button>
+  </form>
+</mat-card>
