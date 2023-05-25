@@ -26,6 +26,7 @@ import { FacilityComponent } from './components/facility/facility.component';
 import { CreateResidentComponent } from './components/resident/create-resident/create-resident.component';
 import { ListResidentComponent } from './components/resident/list-resident/list-resident.component';
 
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { ListResidentComponent } from './components/resident/list-resident/list-
     MatSidenavModule,
     MatButtonModule,
     MatCardModule,
+    MatChipsModule,
     MatInputModule,
     MatExpansionModule,
     MatProgressSpinnerModule,

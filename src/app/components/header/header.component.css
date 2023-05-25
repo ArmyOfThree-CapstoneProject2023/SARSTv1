@@ -2,11 +2,21 @@ ul {
   list-style: none;
   margin: 0;
   padding: 0;
+
 }
 
 a {
   text-decoration: none;
-  color: blue;
+  color: #0367A6
+}
+
+a:hover{
+  color: rgb(167, 25, 25);
+}
+
+a:active{
+  text-decoration: underline;
+  color: rgb(167, 25, 25);
 }
 
 .spacer {

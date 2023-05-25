@@ -1,12 +1,41 @@
+
 mat-card {
   align-items: center;
-  padding: 50px;
+
+}
+
+#regForm h4 {
+  font-family: 'Aboreto', cursive;
+font-family: 'Montserrat Subrayada', sans-serif;
+font-family: 'Overpass', sans-serif;
+font-family: 'Thasadith', sans-serif;
+font-family: 'Ubuntu', sans-serif;
+font-family: 'Ysabeau', sans-serif;
 }
 
 mat-form-field{
-  margin: 10px;
+  margin: 10px 5px 5px 5px;
+}
+
+
+mat-error {
+  padding-top: 5px;
+  color: rgb(231, 51, 51);
 }
 
 button {
   color: white;
+  font-family: 'Aboreto', cursive;
+  font-family: 'Montserrat Subrayada', sans-serif;
+  font-family: 'Overpass', sans-serif;
+  font-family: 'Thasadith', sans-serif;
+  font-family: 'Ubuntu', sans-serif;
+  font-family: 'Ysabeau', sans-serif;
+}
+
+
+
+#regForm {
+  border-radius: 5px;
+  
 }
