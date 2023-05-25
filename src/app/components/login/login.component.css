@@ -13,6 +13,10 @@ mat-form-field{
   background-color: white;
 }
 
+mat-spinner {
+  margin: auto;
+}
+
 mat-error {
   padding-top: 25px;
   color: rgb(231, 51, 51);

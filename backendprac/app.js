@@ -6,6 +6,8 @@ const mongoose = require('mongoose');
 
 //imports user routes
 const userRoutes = require('./routes/user');
+//imports resident routes
+const residentRoutes = require('./routes/resident');
 
 const app = express();
 
@@ -42,7 +44,10 @@ app.get('/',(req, res) => {
   res.end('it works!');
 });
 
-//any request will be sent to the userRoute file
+//any request will be sent to the routes/user file
 app.use('/api/user', userRoutes);
+
+//request will be sent to the routes/register file
+app.use('/api/resident', residentRoutes);
 
 module.exports = app;
