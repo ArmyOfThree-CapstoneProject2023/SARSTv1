@@ -27,6 +27,7 @@ import { CreateResidentComponent } from './components/resident/create-resident/c
 import { ListResidentComponent } from './components/resident/list-resident/list-resident.component';
 
 import { MatChipsModule } from '@angular/material/chips';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,8 @@ import { MatChipsModule } from '@angular/material/chips';
     FormsModule,
     HttpClientModule,
     MatSelectModule,
+    MatCheckboxModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
