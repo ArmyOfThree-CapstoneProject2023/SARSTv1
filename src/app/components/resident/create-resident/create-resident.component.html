@@ -1,6 +1,7 @@
 <mat-card>
   <mat-spinner *ngIf="isLoading"></mat-spinner>
   <form (submit)="onSaveRes(residentForm)" #residentForm="ngForm" *ngIf="!isLoading">
+    <!--name input-->
     <mat-form-field>
       <input
       matInput
@@ -10,16 +11,34 @@
       placeholder="Resident Name" #name="ngModel">
       <mat-error *ngIf="name.invalid">Please enter a valid name</mat-error>
     </mat-form-field>
+    <!--Date of Birth input-->
+    <mat-form-field>
+      <!-- <mat-label>Choose a date</mat-label>
+      <input
+      matInput
+      [matDatepicker]="picker"
+      type="text"
+      name="dob">
+      <mat-hint>MM/DD/YYYY</mat-hint><mat-datepicker-toggle matIconSuffix [ for ] = "picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf=""></mat-error>--></mat-form-field>
+    <!--Residents sex selector-->
+    <mat-form-field></mat-form-field>
+    <!--Resident's Ethnicity-->
+    <mat-form-field></mat-form-field>
+    <!--text block for Description of resident features-->
     <mat-form-field>
       <textarea
       matInput
       rows="4"
       name= "content"
-      [ngModel]="resident?.content" placeholder="Description of Resident"
+      [ngModel]="resident?.content" placeholder="Resident Features"
       required
       #content="ngModel"></textarea>
       <mat-error *ngIf="content.invalid">Please enter a valid description</mat-error>
     </mat-form-field>
+    <!--Services being offered to Resident-->
+    <mat-form-field><textarea></textarea></mat-form-field>
     <button mat-raised-button type="submit">Submit Resident</button>
   </form>
 </mat-card>
