@@ -1,3 +1,131 @@
+<div class="offset-lg-3 p-lg-5 my-5 text-center">
+  <div class="col-md-8 order-md-1 border" id="residentForm">
+    <mat-card>
+      <!--Spinning for laoding-->
+      <mat-spinner *ngIf="isLoading"></mat-spinner>
+
+      <form>
+        <br>
+        <br>
+        <h5 class="mb-3"><strong>New Resident Form</strong></h5>
+        <br>
+
+        <div class="example-container">
+          <!--First and Last Name-->
+          <div class="" id="name">
+            <mat-form-field hintLabel="Max 10 characters">
+              <mat-label>First Name</mat-label>
+              <input matInput #input maxlength="10" placeholder="Ex. Nougat">
+              <mat-hint align="end">{{input.value.length}}/10</mat-hint>
+            </mat-form-field>
+
+            <mat-form-field hintLabel="Max 10 characters">
+              <mat-label>Last Name</mat-label>
+              <input matInput #input maxlength="10" placeholder="Ex. Nougat">
+              <mat-hint align="end">{{input.value.length}}/10</mat-hint>
+            </mat-form-field>
+          </div>
+
+          <!--Enter Resident Id-->
+          <div class="" id="residentID">
+            <mat-form-field hintLabel="SAResidentID">
+              <mat-label>Resident ID</mat-label>
+              <input matInput #input maxlength="9" placeholder="nnnnnnnnn">
+              <mat-hint align="end">{{input.value.length}}/9</mat-hint>
+            </mat-form-field>
+          </div>
+
+          <!--Enter DOB-->
+          <div class="" id="DOB">
+            <mat-form-field hintLabel="(mm/dd/yyyy)">
+              <mat-label>Date of Birth</mat-label>
+              <input matInput #input placeholder="nnnnnnnnn">
+
+            </mat-form-field>
+          </div>
+
+          <!--Select Sex, Gender, Prononuns-->
+          <div class="" id="personalDesc">
+            <mat-form-field>
+              <mat-label>Sex</mat-label>
+              <mat-select>
+                <mat-option value="one">First option</mat-option>
+                <mat-option value="two">Second option</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Gender</mat-label>
+              <mat-select>
+                <mat-option value="one">First option</mat-option>
+                <mat-option value="two">Second option</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Pronouns</mat-label>
+              <mat-select>
+                <mat-option value="one">First option</mat-option>
+                <mat-option value="two">Second option</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+          </div>
+
+          <!--Write Resident Features-->
+          <div class="" id="residentFeatures">
+            <mat-form-field>
+              <mat-label>Resident Features</mat-label>
+              <textarea matInput rows="4" placeholder="Please provide one or a few distinguishing features of the resident"></textarea>
+            </mat-form-field>
+          </div>
+
+          <hr class="mx-5">
+
+          <!--Choose services-->
+          <div class="" #Services>
+            <h6>Services</h6>
+            <mat-checkbox>Snacks</mat-checkbox>
+            <mat-checkbox>Dinners</mat-checkbox>
+            <mat-checkbox>Laundry</mat-checkbox>
+            <mat-checkbox>Snacks</mat-checkbox>
+            <mat-checkbox>Hygiene</mat-checkbox>
+            <mat-checkbox>Mental Health</mat-checkbox>
+          </div>
+
+          <!--Choose disciplinary actions-->
+          <div class="" #DA>
+            <mat-form-field>
+              <mat-label>Disciplinary Actions</mat-label>
+              <mat-select>
+                <mat-option value="one">First option</mat-option>
+                <mat-option value="two">Second option</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <br>
+
+
+          <hr class="mx-5">
+
+          <br>
+
+          <button mat-raised-button type="submit" >SUBMIT</button>
+
+          <br>
+          <br>
+
+
+
+        </div>
+
+      </form>
+    </mat-card>
+  </div>
+
+</div>
+
 <mat-card>
   <mat-spinner *ngIf="isLoading"></mat-spinner>
   <form (submit)="onSaveRes(residentForm)" #residentForm="ngForm" *ngIf="!isLoading">

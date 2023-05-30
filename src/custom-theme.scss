@@ -10,11 +10,14 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$SARSTv1-primary: mat.define-palette(mat.$indigo-palette);
-$SARSTv1-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$SARSTv1-primary: mat.define-palette(mat.$pink-palette);
+$SARSTv1-accent: mat.define-palette(mat.$light-blue-palette, 800, A100, A400);
+$SARSTv1-success: mat.define-palette(mat.$light-blue-palette, 900, A100, A400);
 
 // The warn palette is optional (defaults to red).
 $SARSTv1-warn: mat.define-palette(mat.$red-palette);
+
+//blue palette
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
@@ -23,6 +26,7 @@ $SARSTv1-theme: mat.define-light-theme((
     primary: $SARSTv1-primary,
     accent: $SARSTv1-accent,
     warn: $SARSTv1-warn,
+    success: $SARSTv1-success,
   )
 ));
 
