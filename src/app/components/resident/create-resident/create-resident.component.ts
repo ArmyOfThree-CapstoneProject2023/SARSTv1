@@ -22,7 +22,13 @@ import { DisAction } from '../resident-disciplinaryactions.model';
 export class CreateResidentComponent implements OnInit {
   enteredFName = "";
   enteredLName = "";
+  enteredDob = "";
+  enteredSex = "";
+  enteredGender = "";
+  enteredPronouns = "";
   enteredContent = "";
+  enteredDA = "";
+
 
   resident: Resident;
   isLoading = false;
@@ -45,12 +51,14 @@ export class CreateResidentComponent implements OnInit {
   ];
 
   pronouns: Rpronouns[] = [
+    {rpronounValue: 'n/a', viewValue: 'n/a'},
     {rpronounValue: 'HeHimHis', viewValue: 'He/Him/His'},
     {rpronounValue: 'SheHerHers',viewValue:'She/Her/Hers'},
     {rpronounValue: 'TheyThem',viewValue:'They/Them'},
   ];
 
   disActions: DisAction[] = [
+    {disActionValue: 'No Action', viewValue: 'No Action'},
     {disActionValue: 'Warning', viewValue: 'Warning'},
     {disActionValue: 'Education', viewValue: 'Education'},
     {disActionValue: 'LastChance', viewValue: 'Last Chance Contract'},
