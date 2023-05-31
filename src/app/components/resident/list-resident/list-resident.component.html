@@ -4,7 +4,12 @@
     <mat-expansion-panel-header>
       {{resident.rfname}} {{resident.rlname}}
     </mat-expansion-panel-header>
-    <p>{{resident.content}}</p>
+    <p>{{resident.rdob}}<br>
+    {{resident.rsex}}<br>
+    {{resident.rgender}}<br>
+    {{resident.rpronouns}}<br>
+    {{resident.content}}<br>
+    {{resident.disAction}}</p>
     <mat-action-row>
       <a mat-button color="primary" [routerLink]="['/edit', resident.id]">EDIT</a>
       <button mat-button color="warn" (click)="onDelete(resident.id)">DELETE</button>
