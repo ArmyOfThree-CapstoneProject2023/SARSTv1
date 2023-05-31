@@ -46,8 +46,9 @@ body #main-section {
   font-family: 'Ubuntu', sans-serif;
 }
 
-#map {
-  height: 400px; /* The height is 400 pixels */
-  width: 100%; /* The width is the width of the web page */
+#map iframe{
+  margin: 0;
+  position: relative;
+  margin-bottom: 7%;
+  margin-left: 15%;
 }
-
