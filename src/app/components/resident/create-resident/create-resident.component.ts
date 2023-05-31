@@ -4,6 +4,8 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, ParamMap
  } from '@angular/router';
 
+
+
 import { Resident } from '../resident.model';
 import { ResidentsService } from '../residents.service';
 import { Rgender } from '../resident-gender.model';
@@ -21,7 +23,6 @@ export class CreateResidentComponent implements OnInit {
   enteredFName = "";
   enteredLName = "";
   enteredContent = "";
-
 
   resident: Resident;
   isLoading = false;

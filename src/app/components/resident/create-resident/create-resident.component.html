@@ -15,21 +15,27 @@
           <div class="" id="name">
             <mat-form-field>
               <mat-label>First Name</mat-label>
-              <input matInput
+              <input
+              matInput
               type="text"
               name="rfname"
               [ngModel]="resident?.rfname"
-              placeholder="Resident First Name" #rfname="ngModel">
+              placeholder="Resident First Name"
+              #rfname="ngModel"
+              require>
               <mat-error *ngIf="rfname.invalid">Please enter a valid name</mat-error>
             </mat-form-field>
 
             <mat-form-field>
               <mat-label>Last Name</mat-label>
-              <input matInput
+              <input
+              matInput
               type="text"
               name="rlname"
               [ngModel]="resident?.rlname"
-              placeholder="Resident Last Name" #rlname="ngModel">
+              placeholder="Resident Last Name"
+              #rlname="ngModel"
+              require>
               <mat-error *ngIf="rlname.invalid">Please enter a valid name</mat-error>
             </mat-form-field>
           </div>
@@ -46,9 +52,18 @@
           <!--Enter DOB-->
           <div class="" id="DOB">
             <mat-form-field>
-              <mat-label>Date of Birth</mat-label>
-              <input matInput [matDatepicker]="picker" [ngModel]="resident?.rdob" type="date" #rdob="ngModel" name="rdob"  placeholder="MM/DD/YYYY" ngModel required>
-              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-label>M/D/YY</mat-label>
+              <input
+              matInput
+              [matDatepicker]="picker"
+              [ngModel]="resident?.rdob | date:'short'"
+              type="date"
+              #rdob="ngModel"
+              name="rdob"
+              placeholder="M/D/YY"
+              ngModel
+              required>
+              <mat-hint>Date of Birth</mat-hint>
               <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-datepicker #picker></mat-datepicker>
               <mat-error *ngIf="rdob.invalid">Please enter a Date of Birth</mat-error>
@@ -59,7 +74,11 @@
           <div class="" id="personalDesc">
             <mat-form-field>
               <mat-label>Sex</mat-label>
-              <mat-select name="rsex" ngModel [ngModel]="resident?.rsex" required>
+              <mat-select
+              name="rsex"
+              ngModel
+              [ngModel]="resident?.rsex"
+              required>
                 <mat-option *ngFor="let rsex of rsexes" [value]="rsex.rsexValue">{{rsex.viewValue}}</mat-option>
               </mat-select>
             </mat-form-field>
@@ -87,7 +106,8 @@
               <textarea matInput
               rows="4"
               name= "content"
-              [ngModel]="resident?.content" placeholder="Resident Features"
+              [ngModel]="resident?.content"
+              placeholder="Resident Features"
               required
               #content="ngModel"></textarea>
               <mat-error *ngIf="content.invalid">Please enter a valid description</mat-error>
