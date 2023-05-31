@@ -2,7 +2,7 @@
 <mat-accordion multi="true" *ngIf="residents.length > 0 && !isLoading">
   <mat-expansion-panel *ngFor="let resident of residents">
     <mat-expansion-panel-header>
-      {{resident.name}}
+      {{resident.rfname}} {{resident.rlname}}
     </mat-expansion-panel-header>
     <p>{{resident.content}}</p>
     <mat-action-row>

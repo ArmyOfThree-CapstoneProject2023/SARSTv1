@@ -16,6 +16,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './components/header/header.component';
@@ -27,8 +32,7 @@ import { FacilityComponent } from './components/facility/facility.component';
 import { CreateResidentComponent } from './components/resident/create-resident/create-resident.component';
 import { ListResidentComponent } from './components/resident/list-resident/list-resident.component';
 
-import { MatChipsModule } from '@angular/material/chips';
-import { MatCheckboxModule } from '@angular/material/checkbox';
+
 
 @NgModule({
   declarations: [
@@ -55,8 +59,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     HttpClientModule,
     MatSelectModule,
     MatCheckboxModule,
-
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]

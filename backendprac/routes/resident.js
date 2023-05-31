@@ -6,8 +6,14 @@ const router = express.Router();
 
 router.post("", (req, res, next) =>{
   const resident = new Resident({
-    name: req.body.name,
-    content: req.body.content
+    rfname: req.body.rfname,
+    rlname: req.body.rlname,
+    rdob: req.body.rdob,
+    rsex: req.body.rsex,
+    rgender: req.body.rgender,
+    rpronouns: req.body.rpronouns,
+    content: req.body.content,
+    disAction: req.body.disAction
   });
   resident.save().then(createdResident =>{
     res.status(201).json({message: "Resident added successfully",
@@ -19,8 +25,14 @@ router.post("", (req, res, next) =>{
 router.put("/:id", (req, res, next) => {
   const resident = new Resident({
     _id: req.body.id,
-    name: req.body.name,
-    content: req.body.content
+    rfname: req.body.rfname,
+    rlname: req.body.rlname,
+    rdob: req.body.rdob,
+    rsex: req.body.rsex,
+    rgender: req.body.rgender,
+    rpronouns: req.body.rpronouns,
+    content: req.body.content,
+    disAction: req.body.disAction
   });
   Resident.updateOne({ _id: req.params.id }, resident).then(result => {
     res.status(200).json({message:"Update successful!"});

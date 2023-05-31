@@ -20,8 +20,14 @@ export class ResidentsService {
         map(residentData => {
           return residentData.residents. map(resident => {
             return {
-                name: resident.name,
+                rfname: resident.rfname,
+                rlname: resident.rlname,
+                rdob: resident.rdob,
+                rsex: resident.rsex,
+                rgender: resident.rgender,
+                rpronouns: resident.rpronouns,
                 content: resident.content,
+                disAction: resident.disAction,
                 id: resident._id
               };
             });
@@ -39,14 +45,14 @@ export class ResidentsService {
   //used to fetch a single resident from the backend server by id
   getResident(id: string) {
     return this.http.get<{ _id: string;
-    name: string; content: string }>(
+    rfname: string; rlname: string; rdob: string; rsex:string; rgender:string; rpronouns:string; content: string; disAction: string;}>(
       "http://localhost:3000/api/resident/" + id
     );
   }
 
-  addResident(name: string, content:string)
+  addResident(rlname: string, rfname: string, rdob: string, rsex: string, rgender: string, rpronouns: string, content: string, disAction: string)
   {
-    const resident: Resident = { id: null, name: name, content: content };
+    const resident: Resident = { id: null, rfname: rfname, rlname: rlname, rdob: rdob, rsex: rsex, rgender:rgender, rpronouns: rpronouns, content: content, disAction: disAction };
     this.http
       .post<{ message: string; residentId: string }>(
         "http://localhost:3000/api/resident", resident
@@ -60,9 +66,9 @@ export class ResidentsService {
       });
   }
 
-  updateResident(id: string, name: string, content: string) {
+  updateResident(id: string, rfname: string, rlname: string, rdob: string, rsex: string, rgender: string, rpronouns: string, content: string, disAction: string) {
     //creates a new resident and takes id, name, & content as arguments
-    const resident: Resident = { id: id, name: name, content: content };
+    const resident: Resident = { id: id, rfname: rfname, rlname:rlname, rdob: rdob, rsex: rsex, rgender: rgender, rpronouns: rpronouns, content: content, disAction: disAction };
     this.http
       .put("http://localhost:3000/api/resident/" + id, resident)
       .subscribe(response => {

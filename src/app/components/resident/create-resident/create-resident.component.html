@@ -4,7 +4,7 @@
       <!--Spinning for laoding-->
       <mat-spinner *ngIf="isLoading"></mat-spinner>
 
-      <form>
+      <form (submit)="onSaveRes(residentForm)" #residentForm="ngForm" *ngIf="!isLoading">
         <br>
         <br>
         <h5 class="mb-3"><strong>New Resident Form</strong></h5>
@@ -13,34 +13,45 @@
         <div class="example-container">
           <!--First and Last Name-->
           <div class="" id="name">
-            <mat-form-field hintLabel="Max 10 characters">
+            <mat-form-field>
               <mat-label>First Name</mat-label>
-              <input matInput #input maxlength="10" placeholder="Ex. Nougat">
-              <mat-hint align="end">{{input.value.length}}/10</mat-hint>
+              <input matInput
+              type="text"
+              name="rfname"
+              [ngModel]="resident?.rfname"
+              placeholder="Resident First Name" #rfname="ngModel">
+              <mat-error *ngIf="rfname.invalid">Please enter a valid name</mat-error>
             </mat-form-field>
 
-            <mat-form-field hintLabel="Max 10 characters">
+            <mat-form-field>
               <mat-label>Last Name</mat-label>
-              <input matInput #input maxlength="10" placeholder="Ex. Nougat">
-              <mat-hint align="end">{{input.value.length}}/10</mat-hint>
+              <input matInput
+              type="text"
+              name="rlname"
+              [ngModel]="resident?.rlname"
+              placeholder="Resident Last Name" #rlname="ngModel">
+              <mat-error *ngIf="rlname.invalid">Please enter a valid name</mat-error>
             </mat-form-field>
           </div>
 
           <!--Enter Resident Id-->
-          <div class="" id="residentID">
+          <!-- <div class="" id="residentID">
             <mat-form-field hintLabel="SAResidentID">
               <mat-label>Resident ID</mat-label>
               <input matInput #input maxlength="9" placeholder="nnnnnnnnn">
               <mat-hint align="end">{{input.value.length}}/9</mat-hint>
             </mat-form-field>
-          </div>
+          </div> -->
 
           <!--Enter DOB-->
           <div class="" id="DOB">
-            <mat-form-field hintLabel="(mm/dd/yyyy)">
+            <mat-form-field>
               <mat-label>Date of Birth</mat-label>
-              <input matInput #input placeholder="nnnnnnnnn">
-
+              <input matInput [matDatepicker]="picker" [ngModel]="resident?.rdob" type="date" #rdob="ngModel" name="rdob"  placeholder="MM/DD/YYYY" ngModel required>
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <mat-error *ngIf="rdob.invalid">Please enter a Date of Birth</mat-error>
             </mat-form-field>
           </div>
 
@@ -48,25 +59,22 @@
           <div class="" id="personalDesc">
             <mat-form-field>
               <mat-label>Sex</mat-label>
-              <mat-select>
-                <mat-option value="one">First option</mat-option>
-                <mat-option value="two">Second option</mat-option>
+              <mat-select name="rsex" ngModel [ngModel]="resident?.rsex" required>
+                <mat-option *ngFor="let rsex of rsexes" [value]="rsex.rsexValue">{{rsex.viewValue}}</mat-option>
               </mat-select>
             </mat-form-field>
 
             <mat-form-field>
               <mat-label>Gender</mat-label>
-              <mat-select>
-                <mat-option value="one">First option</mat-option>
-                <mat-option value="two">Second option</mat-option>
+              <mat-select name="rgender" ngModel [ngModel]="resident?.rgender">
+                <mat-option *ngFor="let rgender of rgenders" [value]="rgender.rgenderValue">{{rgender.viewValue}}</mat-option>
               </mat-select>
             </mat-form-field>
 
             <mat-form-field>
               <mat-label>Pronouns</mat-label>
-              <mat-select>
-                <mat-option value="one">First option</mat-option>
-                <mat-option value="two">Second option</mat-option>
+              <mat-select name="rpronuns" ngModel [ngModel]="resident?.rpronouns">
+                <mat-option *ngFor="let rpronouns of pronouns" [value]="rpronouns.rpronounValue">{{rpronouns.viewValue}}</mat-option>
               </mat-select>
             </mat-form-field>
 
@@ -76,7 +84,13 @@
           <div class="" id="residentFeatures">
             <mat-form-field>
               <mat-label>Resident Features</mat-label>
-              <textarea matInput rows="4" placeholder="Please provide one or a few distinguishing features of the resident"></textarea>
+              <textarea matInput
+              rows="4"
+              name= "content"
+              [ngModel]="resident?.content" placeholder="Resident Features"
+              required
+              #content="ngModel"></textarea>
+              <mat-error *ngIf="content.invalid">Please enter a valid description</mat-error>
             </mat-form-field>
           </div>
 
@@ -97,9 +111,8 @@
           <div class="" #DA>
             <mat-form-field>
               <mat-label>Disciplinary Actions</mat-label>
-              <mat-select>
-                <mat-option value="one">First option</mat-option>
-                <mat-option value="two">Second option</mat-option>
+              <mat-select name="disAction" ngModel [ngModel]="resident?.disAction">
+                <mat-option *ngFor="let disAction of disActions" [value]="disAction.disActionValue">{{disAction.viewValue}}</mat-option>
               </mat-select>
             </mat-form-field>
           </div>
@@ -126,47 +139,4 @@
 
 </div>
 
-<mat-card>
-  <mat-spinner *ngIf="isLoading"></mat-spinner>
-  <form (submit)="onSaveRes(residentForm)" #residentForm="ngForm" *ngIf="!isLoading">
-    <!--name input-->
-    <mat-form-field>
-      <input
-      matInput
-      type="text"
-      name="name"
-      [ngModel]="resident?.name"
-      placeholder="Resident Name" #name="ngModel">
-      <mat-error *ngIf="name.invalid">Please enter a valid name</mat-error>
-    </mat-form-field>
-    <!--Date of Birth input-->
-    <mat-form-field>
-      <!-- <mat-label>Choose a date</mat-label>
-      <input
-      matInput
-      [matDatepicker]="picker"
-      type="text"
-      name="dob">
-      <mat-hint>MM/DD/YYYY</mat-hint><mat-datepicker-toggle matIconSuffix [ for ] = "picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-      <mat-error *ngIf=""></mat-error>--></mat-form-field>
-    <!--Residents sex selector-->
-    <mat-form-field></mat-form-field>
-    <!--Resident's Ethnicity-->
-    <mat-form-field></mat-form-field>
-    <!--text block for Description of resident features-->
-    <mat-form-field>
-      <textarea
-      matInput
-      rows="4"
-      name= "content"
-      [ngModel]="resident?.content" placeholder="Resident Features"
-      required
-      #content="ngModel"></textarea>
-      <mat-error *ngIf="content.invalid">Please enter a valid description</mat-error>
-    </mat-form-field>
-    <!--Services being offered to Resident-->
-    <mat-form-field><textarea></textarea></mat-form-field>
-    <button mat-raised-button type="submit">Submit Resident</button>
-  </form>
-</mat-card>
+

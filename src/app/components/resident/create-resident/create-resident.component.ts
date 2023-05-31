@@ -6,6 +6,11 @@ import { ActivatedRoute, ParamMap
 
 import { Resident } from '../resident.model';
 import { ResidentsService } from '../residents.service';
+import { Rgender } from '../resident-gender.model';
+import { Rsex } from '../resident-sex.model';
+import { Rpronouns } from '../resident-pronouns.model';
+import { DisAction } from '../resident-disciplinaryactions.model';
+
 
 @Component({
   selector: 'app-create-resident',
@@ -13,12 +18,43 @@ import { ResidentsService } from '../residents.service';
   styleUrls: ['./create-resident.component.css']
 })
 export class CreateResidentComponent implements OnInit {
-  enteredName = "";
+  enteredFName = "";
+  enteredLName = "";
   enteredContent = "";
-  resident!: Resident;
+
+
+  resident: Resident;
   isLoading = false;
   private mode = "create";
   private residentId: string;
+
+  rsexes: Rsex[] = [
+    {rsexValue: 'Male', viewValue: 'Male' },
+    {rsexValue: 'Female', viewValue: 'Female'},
+    {rsexValue: 'Intersex', viewValue: 'Intersex'},
+  ];
+
+  rgenders: Rgender[] = [
+    {rgenderValue: 'Male', viewValue: 'Male'},
+    {rgenderValue: 'Female', viewValue: 'Female'},
+    {rgenderValue: 'Transgender', viewValue: 'Transgender'},
+    {rgenderValue: 'NonBinary', viewValue: 'Non-Binary'},
+    {rgenderValue: 'GenderFluid', viewValue: 'Gender Fluid'},
+    {rgenderValue: 'Other', viewValue: 'Other'},
+  ];
+
+  pronouns: Rpronouns[] = [
+    {rpronounValue: 'HeHimHis', viewValue: 'He/Him/His'},
+    {rpronounValue: 'SheHerHers',viewValue:'She/Her/Hers'},
+    {rpronounValue: 'TheyThem',viewValue:'They/Them'},
+  ];
+
+  disActions: DisAction[] = [
+    {disActionValue: 'Warning', viewValue: 'Warning'},
+    {disActionValue: 'Education', viewValue: 'Education'},
+    {disActionValue: 'LastChance', viewValue: 'Last Chance Contract'},
+    {disActionValue: 'StepAway', viewValue: 'StepAway'},
+  ];
 
   //constructor is binding route and injecting ActivatedRoute
   //ActivatedRoute holds important data about the route being used
@@ -38,7 +74,7 @@ export class CreateResidentComponent implements OnInit {
         this.isLoading = true;
         this.residentsService.getResident(this.residentId).subscribe(residentData => {
           this.isLoading = false;
-          this.resident = {id: residentData._id, name: residentData.name, content: residentData.content};
+          this.resident = {id: residentData._id, rfname: residentData.rfname, rlname: residentData.rlname, rdob: residentData.rdob, rsex: residentData.rsex, rgender: residentData.rgender, rpronouns: residentData.rpronouns, content: residentData.content, disAction: residentData.disAction};
         });
       } else {
         this.mode = "create";
@@ -53,11 +89,10 @@ export class CreateResidentComponent implements OnInit {
     }
     this.isLoading = true;
     if (this.mode === "create") {
-      this.residentsService.addResident(form.value.name, form.value.content);
+      this.residentsService.addResident(form.value.rfname, form.value.rlname, form.value.dob, form.value.rsex, form.value.rgender, form.value.rpronouns, form.value.content, form.value.disAction);
     } else {
       this.residentsService.updateResident(this.residentId,
-        form.value.name,
-        form.value.content)
+        form.value.rfname, form.value.rlname, form.value.rdob, form.value.rsex, form.value.rgender, form.value.rpronouns, form.value.content, form.value.disAction)
     }
     form.resetForm();
   }
