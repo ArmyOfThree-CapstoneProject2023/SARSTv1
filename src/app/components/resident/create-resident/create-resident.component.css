@@ -29,6 +29,16 @@ mat-spinner {
   width: 81%;
 }
 
+#notes mat-form-field{
+  width: 81%;
+
+}
+
+#events mat-form-field{
+  width: 81%;
+
+}
+
 #Services{
   margin-bottom: 44px;
 }
@@ -46,11 +56,15 @@ button {
   font-family: 'Ysabeau', sans-serif;
 }
 
-#residentForm {
+#residentForm h5 {
   font-family: 'Aboreto', cursive;
   font-family: 'Montserrat Subrayada', sans-serif;
   font-family: 'Overpass', sans-serif;
   font-family: 'Thasadith', sans-serif;
   font-family: 'Ubuntu', sans-serif;
   font-family: 'Ysabeau', sans-serif;
+}
+
+mat-label{
+
 }

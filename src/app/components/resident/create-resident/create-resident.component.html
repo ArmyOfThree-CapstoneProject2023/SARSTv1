@@ -5,7 +5,7 @@
       <mat-spinner *ngIf="isLoading"></mat-spinner>
 
       <form (submit)="onSaveRes(residentForm)" #residentForm="ngForm" *ngIf="!isLoading">
-        <br>
+
         <br>
         <h5 class="mb-3"><strong>New Resident Form</strong></h5>
         <br>
@@ -48,7 +48,6 @@
             <mat-form-field>
               <mat-label>Date of Birth</mat-label>
               <input matInput [matDatepicker]="picker" [ngModel]="resident?.rdob" type="date" #rdob="ngModel" name="rdob"  placeholder="MM/DD/YYYY" ngModel required>
-              <mat-hint>MM/DD/YYYY</mat-hint>
               <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-datepicker #picker></mat-datepicker>
               <mat-error *ngIf="rdob.invalid">Please enter a Date of Birth</mat-error>
@@ -94,11 +93,10 @@
             </mat-form-field>
           </div>
 
-          <hr class="mx-5">
 
           <!--Choose services-->
           <div class="" #Services>
-            <h6>Services</h6>
+            <h6 class="lead">Services</h6>
             <mat-checkbox>Snacks</mat-checkbox>
             <mat-checkbox>Dinners</mat-checkbox>
             <mat-checkbox>Laundry</mat-checkbox>
@@ -107,6 +105,9 @@
             <mat-checkbox>Mental Health</mat-checkbox>
           </div>
 
+          <hr class="mx-5">
+
+          <br>
           <!--Choose disciplinary actions-->
           <div class="" #DA>
             <mat-form-field>
@@ -117,8 +118,39 @@
             </mat-form-field>
           </div>
 
+          <div class="" id="notes">
+            <mat-form-field>
+              <mat-label>Notes</mat-label>
+              <textarea matInput
+              rows="2"
+              name= "content"
+              [ngModel]="resident?.content" placeholder="notes on disciplinary action"
+              required
+              #content="ngModel"></textarea>
+              <mat-error *ngIf="content.invalid">Please enter a valid description</mat-error>
+            </mat-form-field>
+          </div>
           <br>
 
+          <hr class="mx-5">
+
+          <br>
+
+
+          <div class="" id="events">
+            <mat-form-field>
+              <mat-label>Events</mat-label>
+              <textarea matInput
+              rows="4"
+              name= "content"
+              [ngModel]="resident?.content" placeholder="notes on a resident visit"
+              required
+              #content="ngModel"></textarea>
+              <mat-error *ngIf="content.invalid">Please enter a valid description</mat-error>
+            </mat-form-field>
+          </div>
+
+          <br>
 
           <hr class="mx-5">
 
