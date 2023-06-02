@@ -13,7 +13,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -32,6 +32,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { FacilityComponent } from './components/facility/facility.component';
 import { CreateResidentComponent } from './components/resident/create-resident/create-resident.component';
 import { ListResidentComponent } from './components/resident/list-resident/list-resident.component';
+import { AuthInterceptor } from './components/auth-interceptor';
 
 
 
@@ -64,7 +65,7 @@ import { ListResidentComponent } from './components/resident/list-resident/list-
     MatNativeDateModule,
     DatePipe
   ],
-  providers: [DatePipe],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

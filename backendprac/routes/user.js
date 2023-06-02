@@ -62,10 +62,11 @@ router.post('/login', (req, res, next) => {
         message: "Auth failed lvl 2"
       });
     }
-    const token = jwt.sign({email: fetchedUser.email, userId: fetchedUser._id}, "secret_this_should_be_longer", { expiresIn: "1h" }
+    const token = jwt.sign({email: fetchedUser.email, userId: fetchedUser._id}, "secret_this_should_be_longer", { expiresIn: "1h" } //after 1hour of inactivity the token expires and the user is logged out
     );
     res.status(200).json({
-      token: token
+      token: token,
+      expiresIn: 3600
     });
   })
   .catch(err => {

@@ -14,7 +14,7 @@ interface AccountType{
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css'],
-  
+
 
 })
 export class SignupComponent{
@@ -33,7 +33,7 @@ export class SignupComponent{
     if(form.invalid){
       return;
     }
-
+    this.isLoading = true;
     this.authService.createUser(form.value.email, form.value.password, form.value.username, form.value.accountType);
   }
 

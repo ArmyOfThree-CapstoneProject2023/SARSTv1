@@ -42,10 +42,10 @@
 
           <!--Enter Resident Id-->
           <!-- <div class="" id="residentID">
-            <mat-form-field hintLabel="SAResidentID">
+            <mat-form-field>
               <mat-label>Resident ID</mat-label>
               <input matInput #input maxlength="9" placeholder="nnnnnnnnn">
-              <mat-hint align="end">{{input.value.length}}/9</mat-hint>
+
             </mat-form-field>
           </div> -->
 
@@ -57,7 +57,7 @@
               matInput
               [matDatepicker]="picker"
               [ngModel]="resident?.rdob"
-              type="text"
+              
               #rdob="ngModel"
               name="rdob"
               placeholder="M/D/YY"
@@ -92,7 +92,7 @@
 
             <mat-form-field>
               <mat-label>Pronouns</mat-label>
-              <mat-select name="rpronuns" ngModel [ngModel]="resident?.rpronouns">
+              <mat-select name="rpronouns" ngModel [ngModel]="resident?.rpronouns">
                 <mat-option *ngFor="let rpronouns of pronouns" [value]="rpronouns.rpronounValue">{{rpronouns.viewValue}}</mat-option>
               </mat-select>
             </mat-form-field>

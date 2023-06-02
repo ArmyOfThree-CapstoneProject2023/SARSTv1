@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 
 import { Resident } from '../resident.model';
 import { ResidentsService } from '../residents.service';
+import { AuthService } from '../../auth.service';
 
 @Component({
   selector: 'app-list-resident',
@@ -12,8 +13,10 @@ import { ResidentsService } from '../residents.service';
 export class ListResidentComponent implements OnInit, OnDestroy {
   residents: Resident[] = [];
   isLoading = false;
+  userIsAuthenticated = false;
   private residentsSub: Subscription;
-  constructor(public residentsService: ResidentsService) {}
+  private authStatusSub : Subscription;
+  constructor(public residentsService: ResidentsService, private authService: AuthService) {}
 
   ngOnInit() {
     this.isLoading = true;
@@ -23,6 +26,12 @@ export class ListResidentComponent implements OnInit, OnDestroy {
         this.isLoading = false;
         this.residents = residents;
     });
+    this.userIsAuthenticated = this.authService.getIsAuth();
+    this.authStatusSub = this.authService
+      .getAuthStatusListener()
+      .subscribe(isAuthenticated => {
+        this.userIsAuthenticated = isAuthenticated;
+      });
   }
 
   onDelete(residentId: string) {
@@ -32,5 +41,6 @@ export class ListResidentComponent implements OnInit, OnDestroy {
   //used to prevent memory leaks also stops subscribe when components about to be removed
   ngOnDestroy() {
     this.residentsSub.unsubscribe();
+    this.authStatusSub.unsubscribe();
   }
 }
