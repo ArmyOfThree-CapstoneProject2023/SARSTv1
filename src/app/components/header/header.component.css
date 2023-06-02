@@ -25,7 +25,7 @@ header h2{
 
 a {
   text-decoration: none;
-  color: #0367A6
+  color: #022f4b
 }
 
 a:hover{
@@ -34,7 +34,7 @@ a:hover{
 
 a:active{
   text-decoration: underline;
-  color: rgb(167, 25, 25);
+  color: #e43f47;
 }
 
 .spacer {

@@ -1,7 +1,7 @@
 mat-card {
   align-items: center;
   padding: 50px;
-  background-color: #0367A6;
+  background-color: #022f4b;
 }
 
 form {
@@ -37,8 +37,17 @@ form button {
   align-items: center;
   padding: 65px;
 
+
 }
 
+.jumbotron-heading{
+  font-family: 'Aboreto', cursive;
+  font-family: 'Montserrat Subrayada', sans-serif;
+  font-family: 'Overpass', sans-serif;
+  font-family: 'Thasadith', sans-serif;
+  font-family: 'Ubuntu', sans-serif;
+  font-family: 'Ysabeau', sans-serif;
+}
 
 
 body #main-section {
