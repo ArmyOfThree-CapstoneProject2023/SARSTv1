@@ -1,26 +1,29 @@
 <header class="p-3 text-black">
   <div class="container">
-    <div class="d-flex flex-wrap  justify-content-lg-start">
+    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+      <div class="col-md-3 mb-2 mb-md-0">
+        <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
+          <a href="https://www.freepnglogos.com/pics/salvation-army-logo-hd" title="Image from freepnglogos.com"><img src="https://www.freepnglogos.com/uploads/salvation-army-png-logo/the-salvation-army-png-logo-0.png" width="120" alt="the salvation army png logo" /></a>
+          <h2>SARST</h2>
+        </a>
+      </div>
 
-
-      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0" id="accessNav">
         <li *ngIf="userIsAuthenticated"><a href="#" class="nav-link px-2 text-danger">Home</a></li>
         <li *ngIf="userIsAuthenticated"><a routerLink="/facility" class="nav-link px-2">Services</a></li>
         <li *ngIf="userIsAuthenticated"><a routerLink="/" class="nav-link px-2 ">Residents</a></li>
         <li *ngIf="userIsAuthenticated"><a routerLink="/createResident" class="nav-link px-2 ">New Resident</a></li>
       </ul>
 
-      <form class="col-md-auto">
-        <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
-      </form>
-
-      <div class="text-end col-12 col-lg-auto mb-2 mb-lg-0 me-lg-3">
+      <div class="col-md-3 text-end" id="loginReg">
         <ul>
           <li *ngIf="!userIsAuthenticated"><a class="btn btn-outline-danger me-2" routerLink="/login" routerLinkActive="mat-accent">Login</a></li>
           <li *ngIf="!userIsAuthenticated"><a class="btn btn-outline-danger me-2" routerLink="/register" routerLinkActive="mat-accent">Register</a></li>
           <li *ngIf="userIsAuthenticated"><button mat-button (click)="onLogout()">Logout</button></li>
-      </ul>
+        </ul>
+
       </div>
-    </div>
+    </header>
   </div>
+
 </header>

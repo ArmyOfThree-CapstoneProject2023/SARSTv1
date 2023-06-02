@@ -1,7 +1,9 @@
 
 <mat-card>
+
   <mat-spinner *ngIf="isLoading"></mat-spinner>
   <form (submit)="onLogin(loginForm)" #loginForm="ngForm" *ngIf="!isLoading">
+
     <mat-form-field appearance="outline">
       <input matInput name="email" ngModel type="email" placeholder="Email" #emailInput="ngModel" required email>
       <mat-error *ngIf="emailInput.invalid">Please enter a vaild Email address</mat-error>
@@ -10,8 +12,10 @@
       <input type="password" name="password" ngModel matInput placeholder="Password" #passwordInput="ngModel" required>
       <mat-error *ngIf="passwordInput.invalid">Please enter a valid Password</mat-error>
     </mat-form-field>
+
     <button mat-raised-button type="submit" *ngIf="!isLoading">Login</button>
   </form>
+
 </mat-card>
 
 
@@ -20,13 +24,10 @@
 
   <section class="jumbotron text-center">
     <div class="container">
-      <a href="https://www.freepnglogos.com/pics/note" title="Image from freepnglogos.com"><img src="https://www.freepnglogos.com/uploads/note-png/note-pin-pinned-vector-graphic-pixabay-31.png" width="200" alt="note pin pinned vector graphic pixabay" /></a>
       <h1 class="jumbotron-heading">Salvation Army Resident Services Tracker</h1>
       <p class="lead text-muted">Providing a wide range of services to people and families in need all around the world.</p>
       <p>
-        <a href="https://www.salvationarmyusa.org/usn/provide-shelter/" class="btn btn-outline-danger my-2">LEARN MORE...</a>
-
-      </p>
+        <a href="https://www.freepnglogos.com/pics/lokasi-logo" title="Image from freepnglogos.com"><img src="https://www.freepnglogos.com/uploads/lokasi-logo-png/lokasi-logo-tips-membeli-rumah-cermat-dan-tepat-rumahoscarliving-16.png" width="200" alt="lokasi logo, tips membeli rumah cermat dan tepat rumahoscarliving" /></a>      </p>
     </div>
 
   </section>
@@ -35,10 +36,13 @@
 
       <div class="h-100 p-5 bg-light border rounded-3">
         <h2>Our Mission Statement</h2>
-        <a href="https://www.freepnglogos.com/pics/pin" title="Image from freepnglogos.com"><img src="https://www.freepnglogos.com/uploads/pin-png/drawing-pin-tack-thumbtack-vector-graphic-pixabay-6.png" width="200" alt="drawing pin tack thumbtack vector graphic pixabay" /></a>
+
+        <a href="https://www.freepnglogos.com/pics/pin" title="Image from freepnglogos.com"><img src="https://www.freepnglogos.com/uploads/pin-png/drawing-pin-tack-thumbtack-vector-graphic-pixabay-6.png" width="100" alt="drawing pin tack thumbtack vector graphic pixabay" /></a>
         <p>The Salvation Army, an international movement, is an evangelical part of the universal Christian Church. Its message is based on the Bible.
           Its ministry is motivated by the love of God. Its mission is to preach the gospel of Jesus Christ and to meet human needs in His name without
           discrimination.</p>
+        <p><a href="https://www.salvationarmyusa.org/usn/provide-shelter/" class="btn btn-outline-danger my-2">LEARN MORE...</a>
+        </p>
       </div>
 
 

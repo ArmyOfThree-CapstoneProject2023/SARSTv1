@@ -1,8 +1,26 @@
-ul {
+#accessNav ul {
   list-style: none;
   margin: 0;
   padding: 0;
 
+}
+
+header h2{
+  margin-top: 8px;
+  color: #e43f47;
+  font-family: 'Aboreto', cursive;
+  font-family: 'Montserrat Subrayada', sans-serif;
+  font-family: 'Overpass', sans-serif;
+  font-family: 'Thasadith', sans-serif;
+  font-family: 'Ubuntu', sans-serif;
+  font-family: 'Ysabeau', sans-serif;
+}
+
+#loginReg ul{
+  list-style: none;
+  margin: 4px;
+  display: inline-flex;
+  position: relative;
 }
 
 a {
@@ -11,7 +29,7 @@ a {
 }
 
 a:hover{
-  color: rgb(167, 25, 25);
+  color: white;
 }
 
 a:active{
