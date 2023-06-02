@@ -55,17 +55,14 @@
               <mat-label>M/D/YY</mat-label>
               <input
               matInput
-              [matDatepicker]="picker"
               [ngModel]="resident?.rdob"
-              
+              type="text"
               #rdob="ngModel"
               name="rdob"
               placeholder="M/D/YY"
               ngModel
               required>
               <mat-hint>Date of Birth</mat-hint>
-              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
               <mat-error *ngIf="rdob.invalid">Please enter a Date of Birth</mat-error>
             </mat-form-field>
           </div>

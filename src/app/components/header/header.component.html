@@ -10,10 +10,6 @@
         <li *ngIf="userIsAuthenticated"><a routerLink="/createResident" class="nav-link px-2 ">New Resident</a></li>
       </ul>
 
-      <form class="col-md-auto">
-        <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
-      </form>
-
       <div class="text-end col-12 col-lg-auto mb-2 mb-lg-0 me-lg-3">
         <ul>
           <li *ngIf="!userIsAuthenticated"><a class="btn btn-outline-danger me-2" routerLink="/login" routerLinkActive="mat-accent">Login</a></li>

@@ -1,5 +1,5 @@
 //import JWT
-const JWT = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 
 //export function for files to use
 module.exports = (req, res, next) => {

@@ -11,7 +11,7 @@ import { AuthDataLogin } from "./auth-dataLogin.model";
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   private isAuthenticated = false;
-  private token : string;
+  private token: string;
   private tokenTimer: any;
   private authStatusListener = new Subject<boolean>();
 
@@ -34,6 +34,8 @@ export class AuthService {
     const authData: AuthData = {email: email, password: password, username: username, accountType: accountType};
     this.http.post("http://localhost:3000/api/user/register", authData).subscribe(response => {
       console.log(response);
+    }, error => {
+      console.log(error);
     });
   }
 
