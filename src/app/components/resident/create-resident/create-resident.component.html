@@ -56,7 +56,7 @@
               <input
               matInput
               [matDatepicker]="picker"
-              [ngModel]="resident?.rdob | date:'short'"
+              [ngModel]="resident?.rdob"
               type="text"
               #rdob="ngModel"
               name="rdob"
@@ -136,38 +136,6 @@
               <mat-select name="disAction" ngModel [ngModel]="resident?.disAction">
                 <mat-option *ngFor="let disAction of disActions" [value]="disAction.disActionValue">{{disAction.viewValue}}</mat-option>
               </mat-select>
-            </mat-form-field>
-          </div>
-
-          <div class="" id="notes">
-            <mat-form-field>
-              <mat-label>Notes</mat-label>
-              <textarea matInput
-              rows="2"
-              name= "content"
-              [ngModel]="resident?.content" placeholder="notes on disciplinary action"
-              required
-              #content="ngModel"></textarea>
-              <mat-error *ngIf="content.invalid">Please enter a valid description</mat-error>
-            </mat-form-field>
-          </div>
-          <br>
-
-          <hr class="mx-5">
-
-          <br>
-
-
-          <div class="" id="events">
-            <mat-form-field>
-              <mat-label>Events</mat-label>
-              <textarea matInput
-              rows="4"
-              name= "content"
-              [ngModel]="resident?.content" placeholder="notes on a resident visit"
-              required
-              #content="ngModel"></textarea>
-              <mat-error *ngIf="content.invalid">Please enter a valid description</mat-error>
             </mat-form-field>
           </div>
 
