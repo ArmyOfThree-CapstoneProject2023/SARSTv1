@@ -1,10 +1,11 @@
 const express = require('express');
 
 const Resident = require("../models/resident");
-
+const checkAuth = require('../middleware/check-auth');
 const router = express.Router();
 
-router.post("", (req, res, next) =>{
+//middleware request putting a new resident information into database
+router.post("", checkAuth, (req, res, next) =>{
   const resident = new Resident({
     rfname: req.body.rfname,
     rlname: req.body.rlname,
@@ -15,14 +16,15 @@ router.post("", (req, res, next) =>{
     content: req.body.content,
     disAction: req.body.disAction
   });
-  resident.save().then(createdResident =>{
+  resident.save().then(createdResident =>{   //saving the new resident info and sending successful message back
     res.status(201).json({message: "Resident added successfully",
     residentId: createdResident._id
     });
   });
 });
 
-router.put("/:id", (req, res, next) => {
+//middleware rquest submitting an editted resident
+router.put("/:id", checkAuth, (req, res, next) => {
   const resident = new Resident({
     _id: req.body.id,
     rfname: req.body.rfname,
@@ -39,7 +41,8 @@ router.put("/:id", (req, res, next) => {
   });
 });
 
-router.get("", (req, res, next) => {
+//middleware fetching a existing resident
+router.get("", checkAuth,(req, res, next) => {
   Resident.find().then(documents => {
     res.status(200).json({
       message:"Resident fetched successfully!",
@@ -48,7 +51,8 @@ router.get("", (req, res, next) => {
   });
 });
 
-router.get("/:id", (req, res, next) => {
+//middleware that getting a specific id from the database
+router.get("/:id", checkAuth,(req, res, next) => {
   Resident.findById(req.params.id).then(resident => {
     if (resident) {
       res.status(200).json(resident);
@@ -58,7 +62,8 @@ router.get("/:id", (req, res, next) => {
   });
 });
 
-router.delete("/:id", (req, res, next) => {
+//middleware that requests the deletion of a resident from the database
+router.delete("/:id", checkAuth,(req, res, next) => {
   Resident.deleteOne({ _id: req.params.id }). then(result => {
     console.log(result);
     res.status(200).json({ message: "Resident deleted!" });

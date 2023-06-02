@@ -1,9 +1,14 @@
-
+//imports
+//imported express for Node.js - helps with middleware
 const express = require('express');
+//import cors package to help with middleware routes and http requests
 const cors = require('cors');
+//import bodyparser package - parses middleware allowing us to use "req.body"
 const bodyParser = require('body-parser');
+//import mongoose package - connects to established mongoDB database
 const mongoose = require('mongoose');
 
+//imports to routes for middleware
 //imports user routes
 const userRoutes = require('./routes/user');
 //imports resident routes
@@ -50,4 +55,5 @@ app.use('/api/user', userRoutes);
 //request will be sent to the routes/register file
 app.use('/api/resident', residentRoutes);
 
+//exports middlewares to routes established
 module.exports = app;

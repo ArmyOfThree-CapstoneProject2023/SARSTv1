@@ -71,7 +71,7 @@ under the footer-->
         <hr class="mb-4">
 
         <!--Submission Button-->
-        <button class="btn btn-danger btn-lg btn-block" mat-raised-button type="submit">SIGN UP</button>
+        <button class="btn btn-danger btn-lg btn-block" mat-raised-button type="submit" *ngIf="!isLoading">SIGN UP</button>
 
         <!--SPACING-->
         <br>

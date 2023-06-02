@@ -52,7 +52,7 @@ export class ResidentsService {
 
   addResident(rlname: string, rfname: string, rdob: string, rsex: string, rgender: string, rpronouns: string, content: string, disAction: string)
   {
-    const resident: Resident = { id: null, rfname: rfname, rlname: rlname, rdob: rdob, rsex: rsex, rgender:rgender, rpronouns: rpronouns, content: content, disAction: disAction };
+    const resident: Resident = { id: null, rfname: rfname, rlname: rlname, rdob: rdob, rsex: rsex, rgender: rgender, rpronouns: rpronouns, content: content, disAction: disAction };
     this.http
       .post<{ message: string; residentId: string }>(
         "http://localhost:3000/api/resident", resident
