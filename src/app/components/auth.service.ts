@@ -42,7 +42,8 @@ export class AuthService {
   //login sends a request to database to check users submitted info
   login(email: string, password: string) {
     const authDataLogin: AuthDataLogin = {email: email, password: password};
-    this.http.post<{token: string, expiresIn: number}>("http://localhost:3000/api/user/login", authDataLogin).subscribe(response => {
+    this.http.post<{token: string, expiresIn: number}>("http://localhost:3000/api/user/login", authDataLogin)
+    .subscribe(response => {
       const token = response.token;
       this.token = token;
       if(token){
