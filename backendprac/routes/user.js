@@ -8,10 +8,6 @@ const User = require('../models/user');
 
 const router = express.Router();
 
-router.get('/register', (req, res) => {
-  console.log('register is working');
-  res.end();
-});
 
 router.post('/register', (req, res, next) => {
   bcrypt.hash(req.body.password, 10)
@@ -39,10 +35,7 @@ router.post('/register', (req, res, next) => {
   });
 });
 
-router.get('/login', (req, res) => {
-  console.log('Login is working');
-  res.end();
-});
+
 
 router.post('/login', (req, res, next) => {
   let fetchedUser;
@@ -71,7 +64,6 @@ router.post('/login', (req, res, next) => {
     });
   })
   .catch(err => {
-    console.log(err);
     return res.status(401).json({
       message: "Auth failed lvl 3"
     })

@@ -45,10 +45,6 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/',(req, res) => {
-  res.end('it works!');
-});
-
 //any request will be sent to the routes/user file
 app.use('/api/user', userRoutes);
 
