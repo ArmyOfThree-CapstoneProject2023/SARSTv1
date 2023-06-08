@@ -59,7 +59,7 @@
               type="text"
               #rdob="ngModel"
               name="rdob"
-              placeholder="M/D/YY"
+              placeholder="MM/DD/YYYY"
               ngModel
               required>
               <mat-hint>Date of Birth</mat-hint>
@@ -102,7 +102,7 @@
               <mat-label>Resident Features</mat-label>
               <textarea matInput
               rows="4"
-              name= "content"
+              name="content"
               [ngModel]="resident?.content"
               placeholder="Resident Features"
               required
@@ -113,15 +113,22 @@
 
 
           <!--Choose services-->
-          <div class="" #Services>
-            <h6 class="lead">Services</h6>
-            <mat-checkbox>Snacks</mat-checkbox>
-            <mat-checkbox>Dinners</mat-checkbox>
-            <mat-checkbox>Laundry</mat-checkbox>
-            <mat-checkbox>Snacks</mat-checkbox>
-            <mat-checkbox>Hygiene</mat-checkbox>
-            <mat-checkbox>Mental Health</mat-checkbox>
-          </div>
+          <!--Button Services-->
+          <div id="Services"></div>
+          <mat-form-field>
+            <mat-label>Services</mat-label>
+            <textarea
+            matInput
+            rows="4"
+            name="task"
+            [ngModel]="resident?.task"
+            placeholder="Service/s being provided"
+            required
+            #task="ngModel"
+            ></textarea>
+            <mat-error *ngIf="task.invalid">Please submit a service</mat-error>
+          </mat-form-field>
+
 
           <hr class="mx-5">
 

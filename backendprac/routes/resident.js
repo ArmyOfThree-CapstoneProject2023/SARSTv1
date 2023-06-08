@@ -14,6 +14,7 @@ router.post("", checkAuth, (req, res, next) =>{
     rgender: req.body.rgender,
     rpronouns: req.body.rpronouns,
     content: req.body.content,
+    task: req.body.task,
     disAction: req.body.disAction
   });
   resident.save().then(createdResident =>{   //saving the new resident info and sending successful message back
@@ -34,6 +35,7 @@ router.put("/:id", checkAuth, (req, res, next) => {
     rgender: req.body.rgender,
     rpronouns: req.body.rpronouns,
     content: req.body.content,
+    task: req.body.task,
     disAction: req.body.disAction
   });
   Resident.updateOne({ _id: req.params.id }, resident).then(result => {

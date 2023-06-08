@@ -14,6 +14,7 @@ mat-card {
   font-size: 2rem;
 }
 
+/*
 #username mat-form-field{
 
 }
@@ -25,7 +26,7 @@ mat-card {
 #email mat-form-field{
 
 }
-
+*/
 #usertype mat-form-field{
   width: 90%;
 }

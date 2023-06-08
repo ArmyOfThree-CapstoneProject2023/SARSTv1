@@ -8,6 +8,7 @@ const residentSchema = new mongoose.Schema({
   rgender: { type: String, required: true},
   rpronouns: { type: String, required: true},
   content: { type: String, required: true},
+  task: { type: String, required: true},
   disAction: { type: String, required: true},
 });
 

@@ -42,7 +42,7 @@ export class AuthService {
   //login sends a request to database to check users submitted info
   login(email: string, password: string) {
     const authDataLogin: AuthDataLogin = {email: email, password: password};
-    this.http.post<{token: string, expiresIn: number}>("http://localhost:3000/api/user/login", authDataLogin)
+    this.http.post<{token: string; expiresIn: number}>("http://localhost:3000/api/user/login", authDataLogin)
     .subscribe(response => {
       const token = response.token;
       this.token = token;
@@ -53,6 +53,7 @@ export class AuthService {
         this.authStatusListener.next(true); //will inform user is authenticated
         const now = new Date();
         const expirationDate = new Date(now.getTime() + expiresInDuration * 1000);
+        console.log(expirationDate);
         this.saveAuthData(token, expirationDate);
         this.router.navigate(['/']);
       }
@@ -84,6 +85,7 @@ export class AuthService {
   }
 
   private setAuthTimer(duration: number){
+    console.log("Setting timer: " + duration);
     this.tokenTimer = setTimeout(() => {
       this.logout();
     }, duration * 1000);
@@ -108,6 +110,6 @@ export class AuthService {
     return {  //if token or experationDate is found return token and check expiration of token
       token: token,
       expirationDate: new Date(expirationDate) //checks if the token is not expired
-    }
+    };
   }
 }

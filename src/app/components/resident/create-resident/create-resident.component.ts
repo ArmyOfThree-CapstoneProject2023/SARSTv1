@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 //importing ActivatedRoute
 import { ActivatedRoute, ParamMap
  } from '@angular/router';
-
-
+import { MatSelectModule } from '@angular/material/select';
+import { NgFor } from '@angular/common';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { Resident } from '../resident.model';
 import { ResidentsService } from '../residents.service';
@@ -17,8 +18,9 @@ import { DisAction } from '../resident-disciplinaryactions.model';
 @Component({
   selector: 'app-create-resident',
   templateUrl: './create-resident.component.html',
-  styleUrls: ['./create-resident.component.css']
+  styleUrls: ['./create-resident.component.css'],
 })
+
 export class CreateResidentComponent implements OnInit {
   enteredFName = "";
   enteredLName = "";
@@ -27,6 +29,7 @@ export class CreateResidentComponent implements OnInit {
   enteredGender = "";
   enteredPronouns = "";
   enteredContent = "";
+  enteredTask = "";
   enteredDA = "";
 
 
@@ -83,7 +86,7 @@ export class CreateResidentComponent implements OnInit {
         this.isLoading = true;
         this.residentsService.getResident(this.residentId).subscribe(residentData => {
           this.isLoading = false;
-          this.resident = {id: residentData._id, rfname: residentData.rfname, rlname: residentData.rlname, rdob: residentData.rdob, rsex: residentData.rsex, rgender: residentData.rgender, rpronouns: residentData.rpronouns, content: residentData.content, disAction: residentData.disAction};
+          this.resident = {id: residentData._id, rfname: residentData.rfname, rlname: residentData.rlname, rdob: residentData.rdob, rsex: residentData.rsex, rgender: residentData.rgender, rpronouns: residentData.rpronouns, content: residentData.content, task: residentData.task, disAction: residentData.disAction};
         });
       } else {
         this.mode = "create";
@@ -98,10 +101,10 @@ export class CreateResidentComponent implements OnInit {
     }
     this.isLoading = true;
     if (this.mode === "create") {
-      this.residentsService.addResident(form.value.rfname, form.value.rlname, form.value.dob, form.value.rsex, form.value.rgender, form.value.rpronouns, form.value.content, form.value.disAction);
+      this.residentsService.addResident(form.value.rfname, form.value.rlname, form.value.rdob, form.value.rsex, form.value.rgender, form.value.rpronouns, form.value.content, form.value.task, form.value.disAction);
     } else {
       this.residentsService.updateResident(this.residentId,
-        form.value.rfname, form.value.rlname, form.value.rdob, form.value.rsex, form.value.rgender, form.value.rpronouns, form.value.content, form.value.disAction)
+        form.value.rfname, form.value.rlname, form.value.rdob, form.value.rsex, form.value.rgender, form.value.rpronouns, form.value.content, form.value.task, form.value.disAction)
     }
     form.resetForm();
   }

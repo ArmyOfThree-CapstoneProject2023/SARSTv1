@@ -28,11 +28,11 @@ a {
   color: #022f4b
 }
 
-a:hover{
+a:hover {
   color: white;
 }
 
-a:active{
+a:active {
   text-decoration: underline;
   color: #e43f47;
 }

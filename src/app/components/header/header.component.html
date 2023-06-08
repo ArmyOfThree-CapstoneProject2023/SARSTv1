@@ -11,7 +11,6 @@
       <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0" id="accessNav">
         <li *ngIf="userIsAuthenticated"><a href="#" class="nav-link px-2 text-danger">Home</a></li>
         <li *ngIf="userIsAuthenticated"><a routerLink="/facility" class="nav-link px-2">Services</a></li>
-        <li *ngIf="userIsAuthenticated"><a routerLink="/" class="nav-link px-2 ">Residents</a></li>
         <li *ngIf="userIsAuthenticated"><a routerLink="/createResident" class="nav-link px-2 ">New Resident</a></li>
       </ul>
 
@@ -19,7 +18,7 @@
         <ul>
           <li *ngIf="!userIsAuthenticated"><a class="btn btn-outline-danger me-2" routerLink="/login" routerLinkActive="mat-accent">Login</a></li>
           <li *ngIf="!userIsAuthenticated"><a class="btn btn-outline-danger me-2" routerLink="/register" routerLinkActive="mat-accent">Register</a></li>
-          <li *ngIf="userIsAuthenticated"><button mat-button (click)="onLogout()">Logout</button></li>
+          <li *ngIf="userIsAuthenticated"><button mat-button class="btn btn-outline-danger me-2" (click)="onLogout()">Logout</button></li>
         </ul>
 
       </div>

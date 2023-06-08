@@ -19,7 +19,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { DatePipe } from '@angular/common'
+import { DatePipe } from '@angular/common';
+import { NgFor } from '@angular/common';
 
 
 
@@ -63,7 +64,8 @@ import { AuthInterceptor } from './components/auth-interceptor';
     MatCheckboxModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    DatePipe
+    DatePipe,
+    NgFor
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]
