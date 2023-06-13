@@ -7,9 +7,9 @@ module.exports = (req, res, next) => {
   //gets the token as headers parameter
   const token = req.headers.authorization.split(' ')[1];
   //verifies the captured token with the algorithm
-  jwt.verify(token, "secret_this_should_be_longer");
+  jwt.verify(token, process.env.JWT_KEY);
   next();
   }catch(error){
-    res.status(401).json({message: 'Auth Failed Token'});
+    res.status(401).json({message: 'You are not authenticated'});
   }
 }

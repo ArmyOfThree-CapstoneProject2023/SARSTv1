@@ -4,7 +4,11 @@ import { Subject } from "rxjs";
 import { map } from "rxjs/operators";
 import { Router } from "@angular/router"
 
+import { environment } from "src/environments/environment";
 import { Resident } from "./resident.model";
+
+const BACKEND_URL = environment.apiUrl + "/resident/";
+
 //service is accessible throughout the whole application
 @Injectable({providedIn: 'root'})
 export class ResidentsService {
@@ -15,7 +19,7 @@ export class ResidentsService {
 
   getResidents() {
     this.http
-      .get<{ message: string; residents: any }>("http://localhost:3000/api/resident")
+      .get<{ message: string; residents: any }>(BACKEND_URL)
       .pipe(
         map(residentData => {
           return residentData.residents. map(resident => {
@@ -47,7 +51,7 @@ export class ResidentsService {
   getResident(id: string) {
     return this.http.get<{ _id: string;
     rfname: string; rlname: string; rdob: string; rsex:string; rgender:string; rpronouns:string; content: string; task: string; disAction: string;}>(
-      "http://localhost:3000/api/resident/" + id
+      BACKEND_URL + id
     );
   }
 
@@ -56,7 +60,7 @@ export class ResidentsService {
     const resident: Resident = { id: null, rfname: rfname, rlname: rlname, rdob: rdob, rsex: rsex, rgender: rgender, rpronouns: rpronouns, content: content, task: task, disAction: disAction };
     this.http
       .post<{ message: string; residentId: string }>(
-        "http://localhost:3000/api/resident", resident
+        BACKEND_URL, resident
       )
       .subscribe(responseData => {
         const id = responseData.residentId;
@@ -71,7 +75,7 @@ export class ResidentsService {
     //creates a new resident and takes id, name, & content as arguments
     const resident: Resident = { id: id, rfname: rfname, rlname:rlname, rdob: rdob, rsex: rsex, rgender: rgender, rpronouns: rpronouns, content: content, task: task, disAction: disAction };
     this.http
-      .put("http://localhost:3000/api/resident/" + id, resident)
+      .put(BACKEND_URL + id, resident)
       .subscribe(response => {
         const updatedResidents = [...this.residents];
         const oldResidentIndex = updatedResidents.findIndex(p => p.id === resident.id );
@@ -84,7 +88,7 @@ export class ResidentsService {
 
   deleteResident(residentId: string) {
     this.http
-      .delete("http://localhost:3000/api/resident/" + residentId)
+      .delete(BACKEND_URL + residentId)
       .subscribe(() => {
         const updatedResidents = this.residents.filter(resident => resident.id !== residentId);
         this.residents = updatedResidents;

@@ -1,29 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { MatTabsModule } from '@angular/material/tabs';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatButtonModule } from '@angular/material/button';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatCardModule } from '@angular/material/card';
-import { MatInputModule } from '@angular/material/input';
-import { MatExpansionModule } from '@angular/material/expansion';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { ReactiveFormsModule, FormsModule} from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { MatSelectModule } from '@angular/material/select';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
-import { MatChipsModule } from '@angular/material/chips';
-import { MatCheckboxModule } from '@angular/material/checkbox';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { NgFor } from '@angular/common';
 
 
-
+import { AngularMaterialComponent } from './angular-material.module';
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './components/login/login.component';
@@ -34,40 +18,28 @@ import { FacilityComponent } from './components/facility/facility.component';
 import { CreateResidentComponent } from './components/resident/create-resident/create-resident.component';
 import { ListResidentComponent } from './components/resident/list-resident/list-resident.component';
 import { AuthInterceptor } from './components/auth-interceptor';
+import { ErrorInterceptor } from './error-interceptor';
+import { ErrorComponent } from './error/error.component';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent, HeaderComponent, LoginComponent, SignupComponent, FooterComponent, FacilityComponent, CreateResidentComponent, ListResidentComponent
+    AppComponent, HeaderComponent, LoginComponent, SignupComponent, FooterComponent, FacilityComponent, CreateResidentComponent, ListResidentComponent, ErrorComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatToolbarModule,
-    MatTooltipModule,
-    MatFormFieldModule,
-    MatTabsModule,
-    MatSidenavModule,
-    MatButtonModule,
-    MatCardModule,
-    MatChipsModule,
-    MatInputModule,
-    MatExpansionModule,
-    MatProgressSpinnerModule,
-    MatPaginatorModule,
-    ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    MatSelectModule,
-    MatCheckboxModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
+    ReactiveFormsModule,
     DatePipe,
-    NgFor
+    NgFor,
+    AngularMaterialComponent
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
-  bootstrap: [AppComponent]
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }, { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }],
+  bootstrap: [AppComponent],
+  entryComponents: [ErrorComponent] //informs angular that component will be used when angular is unaware
 })
 export class AppModule { }

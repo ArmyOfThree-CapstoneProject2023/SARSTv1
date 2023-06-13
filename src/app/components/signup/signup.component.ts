@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { MatChipsModule } from '@angular/material/chips';
+import { Subscription } from 'rxjs';
 
 
 import { AuthService } from '../auth.service';
@@ -17,8 +17,9 @@ interface AccountType{
 
 
 })
-export class SignupComponent{
+export class SignupComponent implements OnInit, OnDestroy {
   isLoading = false;
+  private authStatusSub: Subscription;
   defaultQuestion = "Options";
   accountTypes: AccountType[] = [
       {accountType: 'root', viewValue: 'Root'},
@@ -27,6 +28,14 @@ export class SignupComponent{
     ];
 
   constructor(public authService: AuthService){}
+
+  ngOnInit() {
+    this.authStatusSub = this.authService.getAuthStatusListener().subscribe(
+      authStatus => {
+        this.isLoading = false;
+      }
+    );
+  }
 
   onRegister(form: NgForm){
 
@@ -37,4 +46,7 @@ export class SignupComponent{
     this.authService.createUser(form.value.email, form.value.password, form.value.username, form.value.accountType);
   }
 
+  ngOnDestroy() {
+    this.authStatusSub.unsubscribe();
+  }
 }

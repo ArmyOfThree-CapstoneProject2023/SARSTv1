@@ -19,7 +19,7 @@ const app = express();
 //mongoose connects Node.js/Express.js with the cloud mongodb SARSTdb
 mongoose
   .connect(
-    'mongodb+srv://Lcounts:haptm140AxW25kyE@sarstdb.afmestn.mongodb.net/node-angular'
+    'mongodb+srv://Lcounts:' + process.env.MONGO_ATLAS_PWD + '@sarstdb.afmestn.mongodb.net/node-angular'
   )
   .then(() => {
     //this then func notifies the connection was successful

@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgForm, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 //importing ActivatedRoute
-import { ActivatedRoute, ParamMap
- } from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { MatSelectModule } from '@angular/material/select';
 import { NgFor } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -13,7 +13,7 @@ import { Rgender } from '../resident-gender.model';
 import { Rsex } from '../resident-sex.model';
 import { Rpronouns } from '../resident-pronouns.model';
 import { DisAction } from '../resident-disciplinaryactions.model';
-
+import { AuthService } from '../../auth.service';
 
 @Component({
   selector: 'app-create-resident',
@@ -21,7 +21,7 @@ import { DisAction } from '../resident-disciplinaryactions.model';
   styleUrls: ['./create-resident.component.css'],
 })
 
-export class CreateResidentComponent implements OnInit {
+export class CreateResidentComponent implements OnInit, OnDestroy {
   enteredFName = "";
   enteredLName = "";
   enteredDob = "";
@@ -37,6 +37,7 @@ export class CreateResidentComponent implements OnInit {
   isLoading = false;
   private mode = "create";
   private residentId: string;
+  private authStatusSub: Subscription;
 
   rsexes: Rsex[] = [
     {rsexValue: 'Male', viewValue: 'Male' },
@@ -71,13 +72,18 @@ export class CreateResidentComponent implements OnInit {
   //constructor is binding route and injecting ActivatedRoute
   //ActivatedRoute holds important data about the route being used
   constructor(public residentsService: ResidentsService,
-    public route: ActivatedRoute) {}
+    public route: ActivatedRoute, private authService: AuthService) {}
 
   //ngOnInit is being used to see if we have a residentId as a parameter for the route
   //paramMap is a built-in observable in which nevers needs to unsubscribe
   //this observable listens to routes in the URL and makes updates to the UI
   ngOnInit() {
-     this.route.paramMap.subscribe
+    this.authStatusSub = this.authService.getAuthStatusListener().subscribe(
+      authStatus => {
+        this.isLoading = false;
+      }
+    );
+    this.route.paramMap.subscribe
     ((paramMap: ParamMap) => {
       //paramMap.has("residentId") is used check for a residentId parameter if no parameter then Angular knows its in createResident route
       if (paramMap.has("residentId")) {
@@ -107,5 +113,9 @@ export class CreateResidentComponent implements OnInit {
         form.value.rfname, form.value.rlname, form.value.rdob, form.value.rsex, form.value.rgender, form.value.rpronouns, form.value.content, form.value.task, form.value.disAction)
     }
     form.resetForm();
+  }
+
+  ngOnDestroy() {
+    this.authStatusSub.unsubscribe(); //unsubscribe infinite observable
   }
 }

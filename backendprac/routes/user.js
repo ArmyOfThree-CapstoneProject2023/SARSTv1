@@ -29,7 +29,7 @@ router.post('/register', (req, res, next) => {
       })
       .catch(err => {
         res.status(500).json({
-          error: err
+          message: "Invalid authentication credentials"
         });
       });
   });
@@ -56,7 +56,7 @@ router.post('/login', (req, res, next) => {
         message: "Auth failed lvl 2"
       });
     }
-    const token = jwt.sign({email: fetchedUser.email, userId: fetchedUser._id}, "secret_this_should_be_longer", { expiresIn: "1h" } //after 1hour of inactivity the token expires and the user is logged out
+    const token = jwt.sign({email: fetchedUser.email, userId: fetchedUser._id}, process.env.JWT_KEY, { expiresIn: "1h" } //after 1hour of inactivity the token expires and the user is logged out
     );
     res.status(200).json({
       token: token,
@@ -65,7 +65,7 @@ router.post('/login', (req, res, next) => {
   })
   .catch(err => {
     return res.status(401).json({
-      message: "Auth failed lvl 3"
+      message: "Invalid authentication credentials"
     })
   });
 });

@@ -1,3 +1,4 @@
+//This auth-interceptor is used to intercept all outgoing request and adds authHeader
 import {
   HttpInterceptor,
   HttpRequest,

@@ -8,6 +8,10 @@ import { AuthData } from "./auth-data.model";
 //imports data model for login function
 import { AuthDataLogin } from "./auth-dataLogin.model";
 
+import { environment } from "src/environments/environment";
+
+const BACKEND_URL = environment.apiUrl + "/user/";
+
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   private isAuthenticated = false;
@@ -32,17 +36,17 @@ export class AuthService {
   //createUser sends collected data to the database
   createUser(email: string, password: string, username: string, accountType: string) {
     const authData: AuthData = {email: email, password: password, username: username, accountType: accountType};
-    this.http.post("http://localhost:3000/api/user/register", authData).subscribe(response => {
-      console.log(response);
+    this.http.post(BACKEND_URL + "/register", authData).subscribe(() => {
+      this.router.navigate(["/login"]);
     }, error => {
-      console.log(error);
+      this.authStatusListener.next(false);
     });
   }
 
   //login sends a request to database to check users submitted info
   login(email: string, password: string) {
     const authDataLogin: AuthDataLogin = {email: email, password: password};
-    this.http.post<{token: string; expiresIn: number}>("http://localhost:3000/api/user/login", authDataLogin)
+    this.http.post<{token: string; expiresIn: number}>(BACKEND_URL + "/login", authDataLogin)
     .subscribe(response => {
       const token = response.token;
       this.token = token;
@@ -57,6 +61,8 @@ export class AuthService {
         this.saveAuthData(token, expirationDate);
         this.router.navigate(['/']);
       }
+    }, error => {
+      this.authStatusListener.next(false);
     });
   }
 
