@@ -1,6 +1,6 @@
 const express = require('express');
 //import bcrypt to encrypt passwords in database
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const jwt = require("jsonwebtoken");
 
 //imported the user file from models/user
