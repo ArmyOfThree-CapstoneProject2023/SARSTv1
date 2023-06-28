@@ -14,18 +14,18 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { FacilityComponent } from './components/facility/facility.component';
+import { FacilityComponent } from './components/assistance/facility/facility.component';
 import { CreateResidentComponent } from './components/resident/create-resident/create-resident.component';
 import { ListResidentComponent } from './components/resident/list-resident/list-resident.component';
 import { AuthInterceptor } from './components/auth-interceptor';
 import { ErrorInterceptor } from './error-interceptor';
 import { ErrorComponent } from './error/error.component';
-
+import { CreateFacilityComponent } from './components/assistance/create-facility/create-facility.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent, HeaderComponent, LoginComponent, SignupComponent, FooterComponent, FacilityComponent, CreateResidentComponent, ListResidentComponent, ErrorComponent
+    AppComponent, HeaderComponent, LoginComponent, SignupComponent, FooterComponent, FacilityComponent, CreateResidentComponent, ListResidentComponent, ErrorComponent, CreateFacilityComponent
   ],
   imports: [
     BrowserModule,

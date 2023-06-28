@@ -3,7 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
-import { FacilityComponent } from './components/facility/facility.component';
+import { FacilityComponent } from './components/assistance/facility/facility.component';
+import { CreateFacilityComponent } from './components/assistance/create-facility/create-facility.component';
 import { ListResidentComponent } from './components/resident/list-resident/list-resident.component';
 import { CreateResidentComponent } from './components/resident/create-resident/create-resident.component';
 import { AuthGuard } from './components/auth.guard';
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component:SignupComponent },
   { path: 'facility', component:FacilityComponent, canActivate: [AuthGuard] },
+  { path: 'CreateFacility',component:CreateFacilityComponent, canActivate: [AuthGuard] },
   { path: '', component:ListResidentComponent, canActivate: [AuthGuard] },
   { path: 'createResident', component:CreateResidentComponent, canActivate: [AuthGuard] },
   //this route connects to the same component as another component but is used for editing residents

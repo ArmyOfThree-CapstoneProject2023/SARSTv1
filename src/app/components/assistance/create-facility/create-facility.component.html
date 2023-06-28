@@ -1,0 +1,61 @@
+
+<div class="offset-lg-3 p-lg-5 my-5 text-center">
+  <div class="col-md-8 order-md-1 border" id="serviceForm">
+    <mat-card>
+
+      <form>
+
+        <br>
+        <h5 class="mb-3"><strong>Service Form</strong></h5>
+        <br>
+
+        <div class="example-container">
+          <!--title of service-->
+          <div>
+            <mat-form-field>
+              <input
+              matInput
+              ngModel
+              placeholder="Service Title"
+              #serviceTitle="ngModel"
+              type="text"
+              name="serviceTitle"
+              required>
+              <mat-error *ngIf="serviceTitle.invalid">Enter a title for Service</mat-error>
+            </mat-form-field>
+          </div>
+
+          <!--description of service-->
+          <div>
+            <mat-form-field>
+              <textarea
+              matInput
+              ngModel
+              name="serviceDescript"
+              placeholder="Service Description"
+              #serviceDescript="ngModel"
+              required
+              ></textarea>
+              <mat-error *ngIf="serviceDescript.invalid">Provide description of service</mat-error>
+            </mat-form-field>
+          </div>
+          <br>
+
+          <hr class="mx-5">
+
+          <br>
+
+          <button mat-raised-button type="submit" >SUBMIT</button>
+
+          <br>
+          <br>
+
+
+
+        </div>
+
+      </form>
+    </mat-card>
+  </div>
+
+</div>

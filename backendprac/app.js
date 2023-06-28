@@ -1,4 +1,5 @@
 //imports
+const path = require("path");
 //imported express for Node.js - helps with middleware
 const express = require('express');
 //import cors package to help with middleware routes and http requests
@@ -33,7 +34,10 @@ mongoose
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
+//uncomment to make a frontend appear on node.js server
+/*
 app.use("/", express.static(path.join(__dirname, 'angular')));
+*/
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -52,9 +56,12 @@ app.use('/api/user', userRoutes);
 //request will be sent to the routes/register file
 app.use('/api/resident', residentRoutes);
 
+//code below allows frontend to appear on node.js server
+/*
 app.use((req, res, next) => {
-  res.sendFile(path.join(__dirname, 'angular', 'index.html'))
+  res.sendFile(path.join(__dirname, 'angular', 'index.html'));
 });
+*/
 
 //exports middlewares to routes established
 module.exports = app;
